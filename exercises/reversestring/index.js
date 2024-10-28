@@ -22,11 +22,11 @@ function reverse(str) {
   //     reverseString = element + reverseString;
   //   }
 
+  // return reverseString;
+
   return str.split("").reduce((prev, element) => {
     return element + prev;
   }, "");
-
-  // return reverseString;
 }
 
 module.exports = reverse;
