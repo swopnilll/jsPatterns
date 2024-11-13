@@ -44,32 +44,40 @@
 //   return true;
 // }
 
+// function anagrams(stringA, stringB) {
+//   let aObject = stringCharacterObjectBuilder(stringA);
+
+//   let bObject = stringCharacterObjectBuilder(stringB);
+
+//   if (Object.keys(aObject).length !== Object.keys(bObject).length) {
+//     return false;
+//   }
+
+//   for (let field in aObject) {
+//     if (bObject[field] !== aObject[field]) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// const stringCharacterObjectBuilder = (string) => {
+//   let obj = {};
+
+//   for (let char of string.replace(/[^\w]/g).toLowerCase()) {
+//     obj[char] = obj[char] ? obj[char] + 1 : 1;
+//   }
+
+//   return obj;
+// };
+
 function anagrams(stringA, stringB) {
-  let aObject = stringCharacterObjectBuilder(stringA);
-
-  let bObject = stringCharacterObjectBuilder(stringB);
-
-  if (Object.keys(aObject).length !== Object.keys(bObject).length) {
-    return false;
-  }
-
-  for (let field in aObject) {
-    if (bObject[field] !== aObject[field]) {
-      return false;
-    }
-  }
-
-  return true;
+  return cleanString(stringA) === cleanString(stringB);
 }
 
-const stringCharacterObjectBuilder = (string) => {
-  let obj = {};
-
-  for (let char of string.replace(/[^\w]/g).toLowerCase()) {
-    obj[char] = obj[char] ? obj[char] + 1 : 1;
-  }
-
-  return obj;
-};
+function cleanString(string) {
+  return string.replace(/[^\w]/g).toLowerCase().split("").sort().join("");
+}
 
 module.exports = anagrams;
